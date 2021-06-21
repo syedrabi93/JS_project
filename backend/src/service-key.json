@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "college-proj-lamton",
+  "private_key_id": "af62eb69515ca87b4523bbc53fc2b43f7385fbad",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCSspQKo4K+Qs7d\nzml7koS28mGmcFxU17xYeCCsueLW0beS8nijAjLnYyQM02kSeZW8co6Ozr9hwhpW\nPkNOIdzcxUAqqemUsjxV5/LG7RfgIgu0KyyQLuLZLGc/Y7d4zW95B3uctafW0UgF\nRKAVd0V88pZc17U+Nkw3EY9wW8HDuFGi1y9Usgvm09wQhehqVX2zQ5TpB1Nf/NOv\nM89VZYvDem6+300h3b7pzfF5+bG4OtD39D8xvSB6gEglcf0F6AHfiUbsZBHgn/un\n8obBM3doC4+cm5Uug+gh+mxuO1mFDZUZJ/+3A4w2OlbxTzX9J9M4qkzmjKghFUgZ\nNnAg1EWxAgMBAAECggEABYBIFJcprM+dxYhbMtZ9d6/w2g94DSONthJ8fdvop8/z\nl4ibbEnpNYvJCyFrFePixk9GG572Yxbt6ufo7o5rTiWoImbFw+Q5n433qN6YdVUs\nLKDz2CJR+Yt0j/LQK1u01Lb/19louCG0bDImqnBL9hHRqx0RsUK2ji1wWL9ayhIh\nPP48EYP6trWx++e7BJGz6ViuNnYRvKPpsBfOh8u9rpb5H8XgxYIDrqfMYhRambTJ\nnhOJ459spymdleub3Nqojea8rCPpde41gm5Rr5SAibSOMZ2H7TJI0dbzN1WM0331\nDPfiv8SASfoOUS4OvRlmFa8/fDfiQl2agSRqg1KbGwKBgQDKwByob2l72M5cRGyT\nUaGxcNerCmvjznPhfGr1DLtC0CcP+U03o9VTBZ+pGwCG5R0ZiN+CUeB6AZ4oVWFA\nZdvnx0OCKkp4UVJPLmSVLQJ9TGVJofIinY0Z9Xt8wTBNW8fpjZC4ZZMGm8e2mSWC\nBLfl7MLm1VJjERJtcWmu/7SgRwKBgQC5OcMmIkeDuGaLaDjDjoI4+w7gGor0+NQ9\nzhjQ+TLX5slSafw1EoVdyb3w9Bvb6ZrAb3De36rOlaDbDDloSgVqeF1L8yRUfC1R\nqvbm73wnw2ZBofbQxEXcK9ZDH7y0H/RYuTpnQg4D6bSYui3R/RxBrIwLbE4/tmbp\n2wF7JrCeRwKBgHuboh0iR2oE5NKluJgcFXsLc8DISryI+mcHJmIdj/EM3DPF5si8\nLms+K3e6iZi0CAiwRKu75SIc6GJoozDSqL3m4wZxaBNwaMDzZMj5tuHS+JFqlSd7\nbDHeUpndYehXw0plT0zMSFWoFZsCRTa+T6tyq+R1O5RALT7h/O9+340zAoGAD3/R\n4KMFsPQBQLEb7uFB7Fq1x/Lwpcccm39ffD0eEArz1b2gqSA/oLV8+2ix3BkUJf4t\nR7kXpenHaA0B0MRA58PiqrRR2e/6KtdPicuIbBthtyRCbv29isrwRvWk6L2zyKjX\nRkS0v4cS4aTSqLuxXZ1+qoYJljNBMVhuK0v1g4kCgYBzSCCeqbfJ6JKFkz5r/zcB\nWVLN3OPbRs6STXKqCvMzIg/+I9Dwfb4zDcAOO9/nHWZQ6O0X3tcDBGvmaRox8TB+\nqZfsjy4t6x5i01fQd7Jdxb+PBBuU2QcUqOa8T4gz8ZoedaPOhlgTlwPDdrJ3MgLX\n8FsJsLEESBbW6j1u5t3tFA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ulq5p@college-proj-lamton.iam.gserviceaccount.com",
+  "client_id": "104406523744502020656",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ulq5p%40college-proj-lamton.iam.gserviceaccount.com"
+}
