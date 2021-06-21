@@ -36,7 +36,7 @@ function Book() {
         date: "",
     });
     const { id } = useParams();
-    
+
     const [designs, setDesigns] = useState([]);
 
     const currentDesign = useMemo(() => {
@@ -50,8 +50,10 @@ function Book() {
         toast.promise(
             new Promise(async (res, rej) => {
                 try {
-                    const result = await api.post("/bookings", details);
-                    console.log(result.data);
+                    const result = await api.post("/bookings", {
+                        ...details,
+                        designId: currentDesign?.id,
+                    });
                     res();
                 } catch (e) {
                     rej(e);
@@ -64,7 +66,6 @@ function Book() {
             }
         );
     };
- 
 
     const fetchDesigns = async () => {
         const res = await api.get("/designs");

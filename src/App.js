@@ -9,6 +9,7 @@ import  { Toaster } from 'react-hot-toast';
 import "./App.css";
 import { Admin } from "./components/Pages/Admin";
 import { AddNew } from "./components/Pages/AddNew";
+import { Bookings } from "./components/Pages/Bookings";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/admin" exact component={Admin} />
                     <Route path="/admin/new" exact component={AddNew} />
                     <Route path="/book/:id" exact component={Book} />
+                    <Route path="/bookings" exact component={Bookings} />
                 </Switch>
                 <Toaster />
             </Router>

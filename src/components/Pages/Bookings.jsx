@@ -60,16 +60,15 @@ export const Bookings = () => {
                                         <tr>
                                             <th scope="row">{i + 1}</th>
                                             <td>{item.name}</td>
-                                            <td>{item.price} CAD</td>
+                                            <td>{item.venue}</td>
                                             <td>
-                                                <img
-                                                    className="img-fluid"
-                                                    style={{ width: 50 }}
-                                                    src={item.images[0]?.url}
-                                                />
+                                               {item.date}
                                             </td>
                                             <td>
-                                                <button
+                                               {item.contact}
+                                            </td>
+                                            <td>
+                                            <button
                                                     onClick={handleDelete(i)}
                                                 >
                                                     Delete

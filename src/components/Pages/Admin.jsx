@@ -45,7 +45,7 @@ export const Admin = () => {
         <>
             <h1 className="my-4">Admin Page</h1>
             <div className="container">
-                <div className="row my-3 justify-content-end">
+                <div className="row my-3 justify-content-between">
                     <div className="col-md-2">
                         <button
                             className="btn btn-success"
