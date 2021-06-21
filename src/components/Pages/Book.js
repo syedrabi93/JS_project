@@ -86,12 +86,12 @@ function Book() {
                 <div className="col-md-6">
                     <div className="cards">
                         <h1 class="h1_align">You Like this Design?</h1>
-                        <h3>Name: {currentDesign.name}</h3>
-                        <h3>Price: ${currentDesign.price} CAD</h3>
+                        <h3 className="h1_align">{currentDesign.name}</h3>
+                        <h3 className="h1_align">Price: ${currentDesign.price} CAD</h3>
                         <div className="d-flex flex-wrap">
                             {currentDesign.images.map((item) => {
                                 return (
-                                    <div style={{ width: 400, height: 400, padding: 20 }}>
+                                    <div style={{ width: 10000 , height: 1000 , padding: 10 }}>
                                         <img
                                             className="img-fluid position-relative"
                                             style={{zIndex: 1}}

@@ -30,13 +30,20 @@
   
   .cards__items {
     margin-bottom: 30px;
+    column-count: 5;
+    flex-flow: wrap;
+    column-gap: 20px;
+    row-gap: 60px;
   }
+
+  
   
   .cards__item {
     display: flex;
     flex: 1;
     margin: 0 3rem;
     border-radius: 10px;
+    
   }
   .cards__item :hover {
     transform: scale(1.1);
