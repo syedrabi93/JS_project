@@ -19,19 +19,22 @@ export default function Login() {
     const history = useHistory();
 
     const handleSubmit = async () => {
-        const promise = new Promise(async resolve => {
-            const res = await api.post('/login', {username, password});
-            localStorage.setItem("AuthToken", res.data.token);
-            history.push('/admin');
-            resolve()
-        })
+        const promise = new Promise(async (resolve, rej) => {
+            try {
+                const res = await api.post("/login", { username, password });
+                localStorage.setItem("AuthToken", res.data.token);
+                history.push("/admin");
+                resolve();
+            } catch (e) {
+                rej(e);
+            }
+        });
         toast.promise(promise, {
             loading: "Checking...",
             success: "Logged In",
-            error: "Invalid username or password"
-        })
-    }
-
+            error: "Invalid username or password",
+        });
+    };
 
     return (
         <>
