@@ -4,7 +4,7 @@ import key from "./service-key.json";
 import jwt from "jsonwebtoken";
 import morgan from "morgan";
 import Multer from "multer";
-import cors from "cors"
+import cors from "cors";
 const upload = Multer({
     storage: Multer.memoryStorage(),
     limits: {
@@ -17,18 +17,18 @@ const app = express();
 admin.initializeApp({
     credential: admin.credential.cert(key as any),
 });
-app.use(cors({origin: "*"}));
+app.use(cors({ origin: "*" }));
 const JWT_SECRET = "verysecure_secret";
 
 const checkAuthMiddleware = (): RequestHandler => async (req, res, next) => {
     const header = req.headers["authorization"];
-   
+
     if (header) {
         const [, token] = header.split("Bearer ");
-     
+
         if (token) {
             const decoded = jwt.verify(token, JWT_SECRET);
-        
+
             //@ts-ignore
             if (decoded.admin) {
                 const firestore = admin.firestore();
@@ -71,7 +71,7 @@ const uploadFileToFirebase = (file: Express.Multer.File) => {
                 action: "read",
             });
 
-            res({url: url[0], path});
+            res({ url: url[0], path });
         });
 
         blobWriter.end(file.buffer);
@@ -81,8 +81,7 @@ const deleteImage = async (path: string) => {
     const fireStorage = admin.storage();
     const bucket = fireStorage.bucket("college-proj-lamton.appspot.com");
     await bucket.file(path).delete();
-
-}
+};
 
 app.use(morgan("common"));
 app.use(express.json());
@@ -110,7 +109,7 @@ app.get("/designs", async (req, res) => {
     const firestore = admin.firestore();
     const result = await firestore.collection("designs").get();
     const designs = result.docs.map((item) => {
-        return {...item.data(),id: item.id}
+        return { ...item.data(), id: item.id };
     });
 
     res.send(designs);
@@ -124,14 +123,15 @@ app.get("/bookings", checkAuthMiddleware(), async (req, res) => {
     res.send(designs);
 });
 
-app.post('/bookings', async (req, res) => {
-    const {firstname, lastname, datetime, } = req.body;
+app.post("/bookings", async (req, res) => {
+    const { name, venue, date, contact, email } = req.body;
     const firestore = admin.firestore();
     const result = await firestore
-        .collection("events").add({firstname, lastname, datetime});
+        .collection("events")
+        .add({ name, venue, contact, email, date });
 
     return res.send((await result.get()).data());
-})
+});
 
 app.post(
     "/designs",
@@ -160,10 +160,7 @@ app.delete("/designs/:id", checkAuthMiddleware(), async (req, res) => {
     const { id } = req.params;
 
     const firestore = admin.firestore();
-    const result = await firestore
-        .collection("designs")
-        .doc(id)
-        .get();
+    const result = await firestore.collection("designs").doc(id).get();
 
     if (!result.exists) {
         return res.send({ msg: "Design Not Found" });
@@ -191,7 +188,6 @@ app.put("/designs", checkAuthMiddleware(), async (req, res) => {
 
     return res.send(result);
 });
-
 
 // Add New Images
 app.post(
@@ -222,28 +218,24 @@ app.post(
     }
 );
 
-app.delete(
-    "/designs/:id/images/",
-    checkAuthMiddleware(),
-    async (req, res) => {
-        const { id } = req.params;
-        const {path} = req.body;
-        const firestore = admin.firestore();
-        const result = await firestore
-            .collection("designs")
-            .where("id", "==", id)
-            .get();
-        if (result.docs.length === 0) {
-            return res.send({ msg: "Design Not Found" });
-        }
-
-        let images = result.docs[0].data().images;
-        const newAimage = images.filter((item: any) => item.path !== path);
-        await deleteImage(path);
-        await result.docs[0].ref.update({ images:newAimage });
-        return res.send(result.docs[0].data());
+app.delete("/designs/:id/images/", checkAuthMiddleware(), async (req, res) => {
+    const { id } = req.params;
+    const { path } = req.body;
+    const firestore = admin.firestore();
+    const result = await firestore
+        .collection("designs")
+        .where("id", "==", id)
+        .get();
+    if (result.docs.length === 0) {
+        return res.send({ msg: "Design Not Found" });
     }
-);
+
+    let images = result.docs[0].data().images;
+    const newAimage = images.filter((item: any) => item.path !== path);
+    await deleteImage(path);
+    await result.docs[0].ref.update({ images: newAimage });
+    return res.send(result.docs[0].data());
+});
 
 app.get("/kill", () => {
     process.exit(0);
