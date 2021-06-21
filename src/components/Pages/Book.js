@@ -82,6 +82,7 @@ function Book() {
             <div className="topPane">
                 <div className="cards">
                     <h1 class="h1_align">You Like this Design?</h1>
+                    <h2> Design: {currentDesign.name} <br></br> Price : ${currentDesign.price}</h2>
                     <div className="cards__wrapper">
                         <div className="book__item__img">
                             {cardInfo.map(renderCard)}
