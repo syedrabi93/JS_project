@@ -94,6 +94,7 @@ function Book() {
                                     <div style={{ width: 400, height: 400, padding: 20 }}>
                                         <img
                                             className="img-fluid position-relative"
+                                            style={{zIndex: 1}}
                                             src={item.url}
                                         />
                                     </div>
