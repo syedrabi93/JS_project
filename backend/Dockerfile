@@ -4,12 +4,11 @@ WORKDIR /nodeapp
 
 COPY package.json .
 
-RUN npm install
+RUN yarn
 
 COPY . .
 
-RUN npm run build
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["yarn", "dev"]
