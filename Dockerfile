@@ -2,7 +2,6 @@ FROM node:14.15.5-stretch as build
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json ./
-COPY yarn.lock ./
 RUN yarn
 COPY src ./src
 COPY public ./public
