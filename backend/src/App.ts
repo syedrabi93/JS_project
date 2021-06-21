@@ -17,7 +17,7 @@ const app = express();
 admin.initializeApp({
     credential: admin.credential.cert(key as any),
 });
-app.use(cors());
+app.use(cors({origin: "*"}));
 const JWT_SECRET = "verysecure_secret";
 
 const checkAuthMiddleware = (): RequestHandler => async (req, res, next) => {
