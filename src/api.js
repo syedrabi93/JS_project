@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "https://lampton-api.app.zap-torrent.com",
     transformRequest: [
         ...axios.defaults.transformResponse,
         (req, headers) => {
