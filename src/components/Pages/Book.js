@@ -88,7 +88,7 @@ function Book() {
                         <h1 class="h1_align">You Like this Design?</h1>
                         <h3>Name: {currentDesign.name}</h3>
                         <h3>Price: ${currentDesign.price} CAD</h3>
-                        <div className="d-flex">
+                        <div className="d-flex flex-wrap">
                             {currentDesign.images.map((item) => {
                                 return (
                                     <div style={{ width: 400, height: 400, padding: 20 }}>
