@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import '../Cards.css';
 import '../Form.css';
 import CardItem from '../CardItem';
 import '../../App.css';
 import { Card } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { api } from "../../api";
 
 
 const cardInfo = [
@@ -41,7 +43,26 @@ function Book() {
   const bookHandler = e => {
     //BookEvent(details);
   }
+  const { id } = useParams();
 
+  
+  const [designs, setDesigns] = useState([]);
+
+  const fetchDesigns = async () => {
+    const res = await api.get("/designs");
+
+    setDesigns(res.data);
+  };
+  useEffect(() => {
+    fetchDesigns();
+  }, []);
+
+  const currentDesign = useMemo(() => {
+    if(designs.length > 0){
+      return designs.filter(item => item.id === id)[0];
+    }
+    return null;
+  }, [id, designs])
 
   return (
     //image section

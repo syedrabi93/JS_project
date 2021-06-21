@@ -1,54 +1,41 @@
-import React from 'react';
-import './Cards.css';
-import CardItem from './CardItem';
-
-
-
-const cardInfo = [
-    {
-        image: 'images/design1.jpeg',
-        title: "design1",
-        price: "2000 CAD "
-    },
-    {
-        image: 'images/design2.jpeg',
-        title: "design2",
-        price: "2000 CAD "
-    },
-    {
-        image: "images/design5.jpeg",
-        title: "design3",
-        price: "2000 CAD "
-    },
-    {
-        image: "images/design4.jpeg",
-        title: "design4",
-        price: "2000 CAD "
-    }
-]
-
-const renderCard = (card ) => {
-    return(
-        <CardItem
-              src={card.image}
-              price={card.price}
-              label={card.title}
-              path='/book'
-            />
-    )
-}
+import React, { useEffect, useState } from "react";
+import "./Cards.css";
+import CardItem from "./CardItem";
+import { api } from "../api";
 
 function Cards() {
-  return (
-    <div className='cards'>
-      <h1>Check out these Designs!</h1>
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>{cardInfo.map(renderCard)}</ul>
+    const [designs, setDesigns] = useState([]);
+
+    const fetchDesigns = async () => {
+      const res = await api.get("/designs");
+      console.log(res.data);
+      setDesigns(res.data);
+    };
+    useEffect(() => {
+      fetchDesigns();
+    }, []);
+
+    return (
+        <div className="cards">
+            <h1>Check out these Designs!</h1>
+            <div className="cards__container">
+                <div className="cards__wrapper">
+                    <ul className="cards__items">
+                        {designs.map((item) => {
+                            return (
+                                <CardItem
+                                    src={item.images[0].url}
+                                    price={item.price}
+                                    label={item.name}
+                                    path={`/book/${item.id}`}
+                                />
+                            );
+                        })}
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
-    export default Cards;
+export default Cards;
