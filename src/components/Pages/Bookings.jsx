@@ -4,27 +4,24 @@ import { useHistory } from "react-router-dom";
 import { api } from "../../api";
 import toast from "react-hot-toast";
 
-export const Admin = () => {
-    const [designs, setDesigns] = useState([]);
-    const fetchDesigns = async () => {
-        const res = await api.get("/designs");
+export const Bookings = () => {
+    const [bookings, setbookings] = useState([]);
+    const fetcheBookings = async () => {
+        const res = await api.get("/bookings");
         console.log(res.data);
-        setDesigns(res.data);
+        setbookings(res.data);
     };
     useEffect(() => {
-        fetchDesigns();
+        fetcheBookings();
     }, []);
-    const history = useHistory();
 
-    const gotoAddNew = () => {
-        history.push("/admin/new");
-    };
+
 
     const handleDelete = (i) => async () => {
         const promise = new Promise(async (res, rej) => {
             try {
-                await api.delete(`/designs/${designs[i].id}`);
-                await fetchDesigns();
+                await api.delete(`/bookings/${bookings[i].id}`);
+                await fetcheBookings();
                 res();
             } catch (e) {
                 rej(e);
@@ -37,32 +34,13 @@ export const Admin = () => {
         });
     };
 
-    const viewBookings = async () => {
-        history.push('/bookings')
-    }
+
 
     return (
         <>
-            <h1 className="my-4">Admin Page</h1>
+            <h1 className="my-4">Bookings List</h1>
             <div className="container">
-                <div className="row my-3 justify-content-end">
-                    <div className="col-md-2">
-                        <button
-                            className="btn btn-success"
-                            onClick={viewBookings}
-                        >
-                            View Bookings
-                        </button>
-                    </div>
-                    <div className="col-md-2">
-                        <button
-                            className="btn btn-success"
-                            onClick={gotoAddNew}
-                        >
-                            Add New
-                        </button>
-                    </div>
-                </div>
+               
                 <div className="row">
                     <div className="col-md-12">
                         <table class="table">
@@ -70,13 +48,14 @@ export const Admin = () => {
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">Image</th>
+                                    <th scope="col">Venue</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Contact</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {designs.map((item, i) => {
+                                {bookings.map((item, i) => {
                                     return (
                                         <tr>
                                             <th scope="row">{i + 1}</th>

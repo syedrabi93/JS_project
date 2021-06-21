@@ -117,18 +117,32 @@ app.get("/designs", async (req, res) => {
 
 app.get("/bookings", checkAuthMiddleware(), async (req, res) => {
     const firestore = admin.firestore();
-    const result = await firestore.collection("designs").get();
-    const designs = result.docs.map((item) => item.data());
+    const result = await firestore.collection("bookings").get();
+    const designs = result.docs.map((item) => ({...item.data() , id: item.id}));
 
     res.send(designs);
 });
+app.delete("/bookings/:id", checkAuthMiddleware(), async (req, res) => {
+    const { id } = req.params;
+
+    const firestore = admin.firestore();
+    const result = await firestore.collection("bookings").doc(id).get();
+
+    if (!result.exists) {
+        return res.send({ msg: "Design Not Found" });
+    }
+    await result.ref.delete();
+
+    return res.send(result);
+
+});
 
 app.post("/bookings", async (req, res) => {
-    const { name, venue, date, contact, email } = req.body;
+    const { name, venue, date, contact, email, designId } = req.body;
     const firestore = admin.firestore();
     const result = await firestore
-        .collection("events")
-        .add({ name, venue, contact, email, date });
+        .collection("bookings")
+        .add({ name, venue, contact, email, date, designId });
 
     return res.send((await result.get()).data());
 });
